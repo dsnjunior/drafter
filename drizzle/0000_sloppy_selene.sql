@@ -1,6 +1,8 @@
 CREATE TABLE `user` (
 	`id` text PRIMARY KEY NOT NULL,
-	`discord_username` text
+	`discord_username` text,
+	`avatar_url` text,
+	`display_name` text
 );
 --> statement-breakpoint
 CREATE TABLE `user_key` (

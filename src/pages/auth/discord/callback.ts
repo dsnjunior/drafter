@@ -21,6 +21,8 @@ export const GET: APIRoute = async (context) => {
       if (existingUser) return existingUser;
       const user = await createUser({
         attributes: {
+          avatar_url: discordUser.avatar ?? null,
+          display_name: discordUser.global_name ?? null,
           discord_username: discordUser.username,
         },
       });

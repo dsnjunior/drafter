@@ -20,6 +20,8 @@ export const auth = luciaBuilder({
   getUserAttributes: (data) => {
     return {
       discordUsername: data.discord_username,
+      displayName: data.display_name,
+      avatarUrl: data.avatar_url,
     };
   },
 });

@@ -2,6 +2,7 @@
 import Global from "@/layouts/global.astro";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { UserMenu } from "@/components/user-menu";
 
 const session = await Astro.locals.auth.validate();
 ---
@@ -11,15 +12,11 @@ const session = await Astro.locals.auth.validate();
     <h1 class="text-2xl mb-2">Astro</h1>
     {
       session ? (
-        <>
-          <p>User id: {session.user.userId}</p>
-          <p>Discord username: {session.user.discordUsername}</p>
-          <div hx-boost="true">
-            <a href="/auth/logout" class={cn(buttonVariants(), "mt-4")}>
-              Log out
-            </a>
-          </div>
-        </>
+        <UserMenu
+          client:idle
+          avatarUrl={session.user.avatarUrl}
+          name={session.user.displayName || session.user.discordUsername}
+        />
       ) : (
         <a href="/auth/discord" class={cn(buttonVariants(), "mt-4")}>
           Login with discord
